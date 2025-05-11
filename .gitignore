@@ -175,9 +175,7 @@ cython_debug/
 
 
 # Custom project specific
-datasets
+dataset
+pren_robot_segmentation
 runs
 *.pt
-label-studio/mydata/*
-labels.jpg
-labels_correlogram.jpg
