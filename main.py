@@ -18,7 +18,7 @@ DATA_YAML_PATH = SCRIPT_DIR / 'dataset' / 'data.yaml'
 # yolov8x-seg.pt (extra large - slowest, highest accuracy)
 PRETRAINED_MODEL = 'yolov8m-seg.pt'
 
-EPOCHS = 200
+EPOCHS = 300
 IMG_SIZE = 640
 BATCH_SIZE = 8
 LEARNING_RATE = 0.001
