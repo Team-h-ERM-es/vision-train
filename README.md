@@ -2,6 +2,28 @@
 
 This project utilizes [uv](https://github.com/astral-sh/uv), an extremely fast Python package installer and resolver, for managing Python virtual environments and dependencies.
 
+## TLDR;
+1.  **Install uv**: Follow [official uv installation guide](https://github.com/astral-sh/uv#installation) if not already installed.
+2.  **Create & Activate Venv**:
+    ```bash
+    uv venv
+    source .venv/bin/activate
+    ```
+3.  **Install PyTorch (Hardware Specific)**: Go to [PyTorch Get Started](https://pytorch.org/get-started/locally/), get the command for your OS/PackageManager(pip)/ComputePlatform, then adapt it for `uv`. Example for NVIDIA:
+    ```bash
+    # EXAMPLE ONLY - GET THE CORRECT COMMAND FROM PYTORCH.ORG & ADAPT FOR UV
+    uv pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118 
+    ```
+4.  **Install Requirements**:
+    ```bash
+    uv pip install -Ur requirements.txt
+    ```
+5.  **Dataset**: Create `./dataset/` folder with `data.yaml`, `train/`, `valid/` (and optionally `test/`) subdirectories containing images and labels as detailed below.
+
+
+# Detailed Instructions
+
+
 ## Install uv (Recommended Python Environment Manager)
 
 It is recommended to use `uv` for creating the virtual environment and managing packages, as the following setup steps are tailored for it. However, if you are familiar with other Python environment management tools (like the standard `venv` module and `pip`), you can adapt these instructions to your preferred workflow.
@@ -24,19 +46,19 @@ Go to the [Official PyTorch Website (Get Started Locally)](https://pytorch.org/g
 A. For NVIDIA GPUs, the command will look like this:
 ```bash
 # EXAMPLE ONLY - GET THE CORRECT COMMAND FROM PYTORCH.ORG
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
+uv pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
 ```
 
 B. For AMD GPUs, the command will look like this:
 ```bash
 # EXAMPLE ONLY - GET THE CORRECT COMMAND FROM PYTORCH.ORG
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm6.3
+uv pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/rocm6.3
 ```
 
 
 ## 3. Install the required packages
 ```bash
-pip install -r requirements.txt
+uv pip install -Ur requirements.txt
 ```
 
 ## 3.1. Dataset Structure (Not in Git)
