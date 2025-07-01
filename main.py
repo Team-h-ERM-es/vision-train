@@ -30,7 +30,7 @@ RUN_NAME = 'fine_tune_yolov8'
 
 
 def check_gpu():
-    """Checks if GPU is available and prints info for both NVIDIA and AMD GPUs."""
+    """Checks if GPU is available and prints info for NVIDIA, AMD (ROCm) and Apple MPS GPUs."""
     gpu_available = False
     device_type = 'cpu'
 
@@ -61,6 +61,12 @@ def check_gpu():
 
         print(f"AMD GPU (ROCm) detected: {device_count} device(s) available.")
         print(f"Using device {current_device_idx}: {actual_gpu_name}")
+    
+    elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_built() and torch.backends.mps.is_available():
+        gpu_available = True
+        device_type = 'mps'
+
+        print("Apple Silicon GPU detected: MPS backend is available and will be used.")
     
     if not gpu_available:
         print("WARNING: No GPU detected. Training will run on CPU (very slow).")
